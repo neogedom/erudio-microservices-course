@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch CambioServiceApplication",
+            "request": "launch",
+            "mainClass": "com.neogedom.cambioservice.CambioServiceApplication"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GreetingServiceApplication<greeting-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.neogedom.greetingservice.GreetingServiceApplication",
+            "projectName": "greeting-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GreetingConfigServerApplication<greeting-config-server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.neogedom.greetingconfigserver.GreetingConfigServerApplication",
+            "projectName": "greeting-config-server",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
