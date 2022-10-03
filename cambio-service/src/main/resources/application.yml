@@ -3,4 +3,14 @@ server:
 spring:
   application:
     name: cambio-service
+  datasource:
+    url: jdbc:mariadb://localhost:3306/cambio_service
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: admin123
+  flyway:
+    url: jdbc:mariadb://localhost:3306/
+    schemas: cambio_service
+    user: root
+    password: admin123
 
