@@ -33,7 +33,7 @@ public class CambioController {
         if (cambio == null) throw new RuntimeException("Currency unsupported");
         var port = environment.getProperty("local.server.port");
         BigDecimal conversionFactor = cambio.getConversionFactor();
-        BigDecimal convertedValue = cambio.getConvertedValue().multiply(amount);
+        BigDecimal convertedValue = conversionFactor.multiply(amount);
         cambio.setConvertedValue(convertedValue.setScale(2, RoundingMode.CEILING));
         cambio.setEnvironment(port);
         return cambio;
