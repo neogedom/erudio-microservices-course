@@ -1,6 +1,7 @@
 package com.neogedom.bookservice.controller;
 
 import com.neogedom.bookservice.model.Book;
+import com.neogedom.bookservice.repository.BookRepository;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,13 +15,18 @@ import java.util.Date;
 public class BookController {
 
     final private Environment environment;
+    final private BookRepository repository;
 
-    public BookController(Environment environment) {
+    public BookController(Environment environment, BookRepository repository) {
         this.environment = environment;
+        this.repository = repository;
     }
     @GetMapping("/{id}/{currency}")
     public Book findBook(@PathVariable("id") Long id, @PathVariable("currency") String currency ) {
+        var book = repository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
         var port = environment.getProperty("local.server.port");
-        return new Book(1L, "Nigel Poulton", "Docker Deep Dive", new Date(), Double.valueOf(13.7), currency, port);
+        book.setCurrency(currency);
+        book.setEnvironment(port);
+        return book;
     }
 }
