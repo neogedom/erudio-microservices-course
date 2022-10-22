@@ -29,7 +29,7 @@ public class BookController {
         var book = repository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
         var cambio = proxy.getCambio(book.getPrice(), "USD", currency);
         var port = environment.getProperty("local.server.port");
-        book.setEnvironment(port + " FEIGN");
+        book.setEnvironment("Book port: " + port + " Cambio port: " + cambio.getEnvironment());
         book.setPrice(cambio.getConvertedValue());
         return book;
     }
