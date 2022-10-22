@@ -20,3 +20,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MariaDB103Dialect
+  jackson:
+    default-property-inclusion: NON_NULL
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
